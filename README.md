@@ -123,6 +123,14 @@ Stores `theme` in `localStorage` (values: `dark|light`). Toggle cycles; applied 
 | Blank window | Check console (Ctrl+Shift+I). Ensure no CSP violation. |
 | Build fails on Windows | Delete `dist/`, re-run `npm install`, then `npm run dist`. |
 | Import error "Invalid file" | File missing `items` array. Export again from Deskify or adapt format. |
+| winCodeSign symlink error (privilege) | Run terminal as Administrator OR disable code signing fetch by adding `"win": { "signAndEditExecutable": false }` if not signing. For quick unsigned portable build use `npm run pack:win`. |
+
+### Portable Build (No Installer)
+If NSIS build is blocked by environment restrictions, produce a portable folder:
+```powershell
+npm run pack:win
+```
+Distribute the resulting `alt-dist/Deskify-win32-x64` (zip it). User launches `Deskify.exe` directly.
 
 ## 🧪 Manual Smoke Checklist
 - Add item

@@ -1,0 +1,64 @@
+{
+  "name": "deskify",
+  "version": "0.1.0",
+  "description": "Cross-platform offline desktop data manager built with Electron.",
+  "main": "src/main.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron .",
+    "test": "node test/testDatastore.js",
+  "gen-icon": "node scripts/genIcon.js",
+  "dist": "npm run gen-icon && electron-builder --publish never",
+  "pack:win": "npm run gen-icon && electron-packager . Deskify --platform=win32 --arch=x64 --out=alt-dist --icon=build/icon.ico --asar --overwrite"
+  },
+  "dependencies": {
+  "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+  "electron-builder": "^24.13.3",
+  "canvas": "^2.11.2",
+  "jimp": "^0.22.10",
+  "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "appId": "com.deskify.app",
+    "productName": "Deskify",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Deskify",
+      "deleteAppDataOnUninstall": false
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "maintainer": "",
+      "vendor": "Deskify",
+      "icon": "build"
+    }
+  }
+}

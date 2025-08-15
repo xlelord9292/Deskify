@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deskify</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline';" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Deskify Local Data Manager</h1>
+  </header>
+  <main>
+    <section class="new-item">
+      <h2>Add Item</h2>
+      <form id="itemForm">
+        <input type="text" id="title" placeholder="Title" required />
+        <textarea id="description" placeholder="Description"></textarea>
+        <button type="submit">Add</button>
+      </form>
+    </section>
+    <section>
+      <h2>Items</h2>
+      <div class="toolbar">
+        <input id="search" placeholder="Search..." />
+        <button id="exportBtn" title="Export JSON">Export</button>
+        <label class="import-label" title="Import JSON">
+          Import <input type="file" id="importFile" accept="application/json" hidden />
+        </label>
+        <button id="themeToggle" title="Toggle Theme">Theme</button>
+      </div>
+      <ul id="itemsList" class="items"></ul>
+    </section>
+  </main>
+  <template id="item-template">
+    <li class="item">
+      <div class="content">
+        <input class="edit-title" />
+        <textarea class="edit-description"></textarea>
+      </div>
+      <div class="actions">
+        <button class="save">💾</button>
+        <button class="delete">🗑</button>
+      </div>
+    </li>
+  </template>
+  <script src="renderer.js"></script>
+</body>
+</html>
